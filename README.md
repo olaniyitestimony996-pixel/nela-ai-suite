@@ -1,6 +1,6 @@
-# 🤖 Nela AI Suite v3.0 — Standalone Intelligent OS Controller
+#  Nela AI Suite v3.0 — Standalone Intelligent OS Controller
 
-🚀 **An Official Production Release of Nela Company** 🚀
+ **An Official Production Release of Nela Company** 
 
 [![Download Release](https://shields.io)](#-download--installation-wizard)
 [![Local LLM Engine](https://shields.io)](https://ollama.com)
@@ -12,15 +12,15 @@ Nela intercepts your natural language inputs, decodes your intent contextually, 
 
 ---
 
-## ⚡ What Makes Nela AI Elite?
-* **🏢 Nela Company Architecture:** Developed to run flawlessly on consumer hardware structures without performance overhead.
-* **🧠 Complete Offline Intelligence:** Built on top of the ultra-fast local `qwen2.5:3b` model weights array. Your conversations never leave your local hardware layout.
-* **⚙️ Direct OS Automation:** Reaches straight into the native Windows kernel layer to handle audio device modifications, process termination, hardware statistics tracking, and visual desktop captures.
-* **🎯 Automated Diagnostic Launcher:** Bundled with a specialized controller macro that scans host environment paths, ensures models are running, and handles runtime background initialization silently.
+##  What Makes Nela AI Elite?
+* ** Nela Company Architecture:** Developed to run flawlessly on consumer hardware structures without performance overhead.
+* ** Complete Offline Intelligence:** Built on top of the ultra-fast local `qwen2.5:3b` model weights array. Your conversations never leave your local hardware layout.
+* ** Direct OS Automation:** Reaches straight into the native Windows kernel layer to handle audio device modifications, process termination, hardware statistics tracking, and visual desktop captures.
+* ** Automated Diagnostic Launcher:** Bundled with a specialized controller macro that scans host environment paths, ensures models are running, and handles runtime background initialization silently.
 
 ---
 
-## 📦 Download & Installation Wizard
+##  Download & Installation Wizard
 
 To deploy the pre-compiled version of Nela AI on your laptop like a true consumer application, follow these simple steps:
 
@@ -43,7 +43,7 @@ To deploy the pre-compiled version of Nela AI on your laptop like a true consume
 
 ---
 
-## 📈 Version Evolutionary Timeline
+##  Version Evolutionary Timeline
 
 | Release | Underlying Engine | Logic Type | System Control Method |
 | :--- | :--- | :--- | :--- |
