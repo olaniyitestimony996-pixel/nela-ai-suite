@@ -1,4 +1,4 @@
-#  Nela AI Suite v3.0 — Standalone Intelligent OS Controller
+#  Nela AI Suite v3.0 — Standalone window  based AI assistant 
 
  **An Official Production Release of Nela Company** 
 
