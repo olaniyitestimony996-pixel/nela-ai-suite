@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Nela AI</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app">
+
+        <!-- ============ SIDEBAR ============ -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header drag-region">
+                <div class="sidebar-logo"></div>
+                <span class="sidebar-title">Nela</span>
+            </div>
+
+            <nav class="nav-list">
+                <button class="nav-item active" data-view="home">🏠 <span>Home</span></button>
+                <button class="nav-item" data-view="chat">🕘 <span>History</span></button>
+                <button class="nav-item" data-soon="Explore">🧭 <span>Explore</span></button>
+                <button class="nav-item" data-soon="Saved">⭐ <span>Saved</span></button>
+                <button class="nav-item" data-soon="Custom GPTs">👥 <span>Custom GPTs</span></button>
+                <button class="nav-item" id="settingsNavBtn">⚙️ <span>Settings</span></button>
+            </nav>
+
+            <div class="sidebar-divider"></div>
+
+            <div class="history-section">
+                <div class="history-label">Recent Chats</div>
+                <div id="historyList"><div class="history-loading">Loading…</div></div>
+            </div>
+
+            <div class="sidebar-footer">
+                <button class="new-chat-btn" id="newChatBtn">+ New chat</button>
+            </div>
+        </aside>
+
+        <!-- ============ MAIN ============ -->
+        <main class="main">
+            <div class="top-bar drag-region">
+                <div class="top-bar-spacer"></div>
+
+                <div class="top-bar-right">
+                    <div class="notif-wrap">
+                        <button class="icon-round" id="bellBtn" title="Notifications">🔔</button>
+                        <div class="notif-dropdown" id="notifDropdown">
+                            <div class="dropdown-label">Notifications</div>
+                            <div id="notifContent" class="notif-empty">No notifications yet.</div>
+                        </div>
+                    </div>
+
+                    <div class="avatar-wrap">
+                        <button class="avatar-btn" id="avatarBtn">?</button>
+                        <div class="avatar-dropdown" id="avatarDropdown">
+                            <div class="dropdown-label" id="avatarName">—</div>
+                            <button class="dropdown-item" id="renameBtn">Rename</button>
+                            <button class="dropdown-item" id="openSettingsBtn">Settings</button>
+                        </div>
+                    </div>
+
+                    <div class="window-controls">
+                        <button class="win-btn" id="winMinimize" title="Minimize">—</button>
+                        <button class="win-btn" id="winMaximize" title="Maximize">▢</button>
+                        <button class="win-btn win-close" id="winClose" title="Close">✕</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="updateBanner" class="update-banner" style="display: none;">
+                <span id="updateBannerText"></span>
+                <button id="updateBannerBtn" class="update-btn">Update</button>
+            </div>
+            <div id="errorBanner" class="error-banner" style="display: none;"></div>
+
+            <!-- Home / welcome view -->
+            <div class="home-view" id="homeView">
+                <div class="home-orb"></div>
+                <h1 id="welcomeHeading">Welcome back, <span id="welcomeName" class="gradient-text">there</span> 👋</h1>
+                <p class="home-sub">Great to see you again! What would you like to explore today?</p>
+
+                <div class="suggestion-grid">
+                    <button class="suggestion-card" data-suggestion="Give me some ideas for organizing my week">
+                        <span class="suggestion-icon" style="background:#3b3bff33;color:#8b8bff;">💡</span>
+                        <div class="suggestion-title">Get Ideas</div>
+                        <div class="suggestion-desc">Brainstorm, plan, and find new perspectives.</div>
+                        <span class="suggestion-arrow">→</span>
+                    </button>
+                    <button class="suggestion-card" data-suggestion="Help me write a short email">
+                        <span class="suggestion-icon" style="background:#0f766e33;color:#5eead4;">📝</span>
+                        <div class="suggestion-title">Write Something</div>
+                        <div class="suggestion-desc">Emails, notes, and everyday writing.</div>
+                        <span class="suggestion-arrow">→</span>
+                    </button>
+                    <button class="suggestion-card" data-suggestion="Help me debug a piece of code">
+                        <span class="suggestion-icon" style="background:#5b21b633;color:#c4b5fd;">💻</span>
+                        <div class="suggestion-title">Solve Problems</div>
+                        <div class="suggestion-desc">Get help with logic, code, and troubleshooting.</div>
+                        <span class="suggestion-arrow">→</span>
+                    </button>
+                    <button class="suggestion-card" data-suggestion="What's happening in the news today?">
+                        <span class="suggestion-icon" style="background:#9d174d33;color:#f9a8d4;">✨</span>
+                        <div class="suggestion-title">Learn &amp; Research</div>
+                        <div class="suggestion-desc">Understand topics and get current answers.</div>
+                        <span class="suggestion-arrow">→</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Chat window -->
+            <div class="chat-window" id="chatWindow" style="display: none;"></div>
+
+            <!-- Input -->
+            <div class="input-area">
+                <div class="input-box">
+                    <button class="icon-btn" id="newFromInputBtn" title="New chat">+</button>
+
+                    <textarea id="messageInput" placeholder="Ask me anything…" rows="1"></textarea>
+
+                    <button class="chip-toggle" id="webSearchToggle" title="Toggle web search">🌐 Web Search</button>
+
+                    <button class="icon-btn mic-btn" id="micBtn" title="Voice input">🎙</button>
+
+                    <div class="tools-wrap">
+                        <button class="icon-btn" id="toolsBtn" title="Tools">☰ Tools</button>
+                        <div class="tools-dropdown" id="toolsDropdown">
+                            <button class="dropdown-item" id="wakeToggle">✨ Enable "Hey Nela"</button>
+                            <button class="dropdown-item" id="ttsToggleItem">🔇 Speak replies: Off</button>
+                        </div>
+                    </div>
+
+                    <button class="icon-btn send" id="sendBtn" disabled title="Send">↑</button>
+                </div>
+                <p class="input-footnote">Nela runs locally — nothing leaves this machine unless Web Search is on.</p>
+            </div>
+        </main>
+
+        <!-- ============ VOICE OVERLAY ============ -->
+        <div class="voice-overlay" id="voiceOverlay">
+            <div class="voice-overlay-inner">
+                <div class="voice-ring-wrap" id="voiceRingWrap">
+                    <div class="voice-core"></div>
+                </div>
+                <div class="voice-label" id="voiceLabel">Listening…</div>
+            </div>
+        </div>
+
+        <!-- ============ FIRST-RUN NAME MODAL ============ -->
+        <div class="modal-overlay" id="nameModal">
+            <div class="modal">
+                <h2>What should Nela call you?</h2>
+                <p class="modal-sub">Just a name, stored on this device — not an account.</p>
+                <input type="text" id="nameInput" placeholder="Your name" maxlength="40">
+                <button class="modal-btn" id="nameSaveBtn">Continue</button>
+            </div>
+        </div>
+
+        <!-- ============ SETTINGS MODAL ============ -->
+        <div class="modal-overlay" id="settingsModal">
+            <div class="modal">
+                <h2>Settings</h2>
+
+                <div class="settings-row">
+                    <span>Your name</span>
+                    <button class="dropdown-item small" id="settingsRenameBtn">Change</button>
+                </div>
+                <div class="settings-row">
+                    <span>Speak replies aloud</span>
+                    <button class="toggle-switch" id="settingsTtsToggle"><span class="toggle-knob"></span></button>
+                </div>
+                <div class="settings-row">
+                    <span>"Hey Nela" wake word</span>
+                    <button class="toggle-switch" id="settingsWakeToggle"><span class="toggle-knob"></span></button>
+                </div>
+                <div class="settings-row">
+                    <span>Version <span id="versionLabel">—</span></span>
+                    <button class="dropdown-item small" id="checkUpdateBtn">Check for updates</button>
+                </div>
+                <div class="settings-row">
+                    <span>App / file index</span>
+                    <button class="dropdown-item small" id="settingsRebuildBtn">Rebuild</button>
+                </div>
+
+                <button class="modal-btn secondary" id="settingsCloseBtn">Close</button>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
